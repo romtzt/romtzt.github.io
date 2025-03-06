@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comptes</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <iframe src="https://docs.google.com/spreadsheets/d/1qGmJf-NdUpyF6g8orhqucjMM2VSbic-oOBrHEtfTWqE/edit?widget=true&headers=false#gid=1566734167"></iframe>
+
+
+    <script>
+        // Attendre que l'iframe charge complètement
+        document.getElementById("sheetFrame").onload = function() {
+            let iframe = document.getElementById("sheetFrame").contentWindow;
+            
+            // Simuler le raccourci clavier "Ctrl + +"
+            iframe.document.dispatchEvent(new KeyboardEvent("keydown", {
+                key: "+",
+                code: "Equal",
+                keyCode: 187,
+                which: 187,
+                bubbles: true,
+                cancelable: true,
+                ctrlKey: true
+            }));
+        };
+    </script>
+
+</body>
+</html>
