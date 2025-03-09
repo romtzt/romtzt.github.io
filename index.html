@@ -3,44 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="comp.png">
-    <title>Comptes</title>
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
+    <title>Accès sécurisé</title>
+
+    
+    <script src="config.js"></script>
+<script>
+    function passWord() {
+        let attempts = 0;
+        const maxAttempts = 3;
+
+        while (attempts < maxAttempts) {
+            let pass = prompt("Veuillez entrer le mot de passe :", "");
+
+            if (!pass) {
+                history.go(-1);
+                return;
+            }
+
+            if (pass.toLowerCase() === window.mdp) {
+                window.location.href = "compte.html";
+                return;
+            }
+
+            attempts++;
+            alert("Accès interdit - Mot de passe incorrect. Veuillez réessayer.");
         }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-    </style>
+
+        history.go(-1);
+        window.location.href = "https://www.google.com/";
+    }
+</script>
+
 </head>
 <body>
-
-    <iframe src="https://docs.google.com/spreadsheets/d/1qGmJf-NdUpyF6g8orhqucjMM2VSbic-oOBrHEtfTWqE/edit?widget=true&headers=false#gid=1566734167"></iframe>
-
-
-    <script>
-        // Attendre que l'iframe charge complètement
-        document.getElementById("sheetFrame").onload = function() {
-            let iframe = document.getElementById("sheetFrame").contentWindow;
-            
-            // Simuler le raccourci clavier "Ctrl + +"
-            iframe.document.dispatchEvent(new KeyboardEvent("keydown", {
-                key: "+",
-                code: "Equal",
-                keyCode: 187,
-                which: 187,
-                bubbles: true,
-                cancelable: true,
-                ctrlKey: true
-            }));
-        };
-    </script>
-
+    <center>
+        <form>
+            <input type="button" value="ENTRER" onclick="passWord()">
+        </form>
+    </center>
 </body>
 </html>
